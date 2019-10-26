@@ -46,11 +46,7 @@ matrix:
   fast_finish: true
   include:
     # Builds that are executed for every PR
-    - os: osx # run base tests on both platforms
     - os: linux
-    - os: windows
-      env: CARGO_INCREMENTAL=0 OS_WINDOWS=true
-
     # Builds that are only executed when a PR is r+ed or a try build is started
     # We don't want to run these always because they go towards
     # the build limit within the Travis rust-lang account.
@@ -70,13 +66,13 @@ matrix:
     - env: INTEGRATION=bluss/rust-itertools
       if: repo =~ /^rust-lang\/rust-clippy$/ AND branch IN (auto, try)
     - env: INTEGRATION=serde-rs/serde
-      if: repo =~ /^rust-lang\/rust-clippy$/ AND branch IN (auto, try)
+      if: repo =~ /^rust-lang\/rust-clippy$/
     - env: INTEGRATION=rust-lang-nursery/stdsimd
-      if: repo =~ /^rust-lang\/rust-clippy$/ AND branch IN (auto, try)
+      if: repo =~ /^rust-lang\/rust-clippy$/
     - env: INTEGRATION=rust-random/rand
-      if: repo =~ /^rust-lang\/rust-clippy$/ AND branch IN (auto, try)
+      if: repo =~ /^rust-lang\/rust-clippy$/
     - env: INTEGRATION=rust-lang-nursery/futures-rs
-      if: repo =~ /^rust-lang\/rust-clippy$/ AND branch IN (auto, try)
+      if: repo =~ /^rust-lang\/rust-clippy$/
     - env: INTEGRATION=Marwes/combine
       if: repo =~ /^rust-lang\/rust-clippy$/ AND branch IN (auto, try)
     - env: INTEGRATION=rust-lang-nursery/failure
