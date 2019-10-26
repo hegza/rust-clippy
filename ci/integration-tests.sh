@@ -25,11 +25,4 @@ cargo clippy \
     -- \
     --cap-lints warn \
     -W clippy::pedantic \
-    -W clippy::nursery \
-    > clippy_output 2>&1 || true
-
-cat clippy_output
-
-if grep -q "internal compiler error\|query stack during panic\|E0463" clippy_output; then
-    exit 1
-fi
+    -W clippy::nursery
